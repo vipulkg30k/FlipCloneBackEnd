@@ -42,5 +42,5 @@ app.use('/api', initialDataRoutes);
 app.use('/api', pageRoutes);
 
 app.listen(process.env.PORT, () => {
-    console.log(`Server is running at ${process.env.PORT}`);
+    console.log(`Server is running on port ${process.env.PORT}`);
 });

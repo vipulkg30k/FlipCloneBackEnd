@@ -108,5 +108,6 @@ exports.deleteCategories = async (req, res) => {
         res.status(201).json({message: 'Categories removed'});
     }else{
         res.status(400).json({message: 'Something went wrong'});
-    }   
+    }
+    
 }
