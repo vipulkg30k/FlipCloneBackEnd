@@ -5,7 +5,7 @@ const shortid = require("shortid");
 
 const generateJwtToken = (_id, role) => {
   return jwt.sign({ _id, role }, process.env.JWT_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "30d",
   });
 };
 
@@ -13,7 +13,7 @@ exports.signup = (req, res) => {
   User.findOne({ email: req.body.email }).exec(async (error, user) => {
     if (user)
       return res.status(400).json({
-        message: "User already registered",
+        error: "User already registered",
       });
 
     const { firstName, lastName, email, password } = req.body;
@@ -54,7 +54,7 @@ exports.signin = (req, res) => {
         // const token = jwt.sign(
         //   { _id: user._id, role: user.role },
         //   process.env.JWT_SECRET,
-        //   { expiresIn: "1d" }
+        //   { expiresIn: "30d" }
         // );
         const token = generateJwtToken(user._id, user.role);
         const { _id, firstName, lastName, email, role, fullName } = user;
